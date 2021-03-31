@@ -32,16 +32,31 @@ export const getStudentsByInstructorId = (instructorId) => {
 // It should accept one integer parameter named `languageCount`
 // It should return an array of students who know as many (or more) languages than `languageCount`
 // Ex: If the number 2 is passed to the function, only the students who know 2 or more languages should be returned
-
+export const getPolyglotStudents = (languageCount) => {
+    const polyglotStudents = students.filter(students => students.languages.length >= languageCount);
+    return polyglotStudents;
+}
 // Export a function called getAvailableInstructors
 // It should not accept any parameters
 // It should return an array of instructors that don't have any students
-
+export const getAvailableInstructors = () => {
+    let studentArray = students.map(student => student.instructorId)
+    return instructors.filter(instructor => {
+        if (studentArray.includes(instructor.id) === false) {
+            console.log("available", instructor)
+            return instructor
+        }
+    })
+}
 // Export a function called getStudentsByLanguage
 // It should accept one string parameter named `language`
 // It should return an array of students who know the given language
 // HINT: In addition to the `filter` method, you might also look up the `some` method
-
+export const getStudentsByLanguage = (language) => {
+    const knowLanguage = students.filter(student => student.languages.includes(language))
+    console.log("language", knowLanguage)
+    return knowLanguage;
+}
 /******** ADVANCED CHALLENGE ********/
 /******** Only do this if all other tests are passing ****/
 /******** To test, uncomment the code at the bottom of tests/filter.spec.js  *****/

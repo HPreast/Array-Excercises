@@ -1,3 +1,5 @@
-import { getStudentsInCohort } from "./src/filterExercises.js";
+import { getAvailableInstructors, getStudentsByLanguage, getStudentsInCohort } from "./src/filterExercises.js";
 
 getStudentsInCohort(12);
+getAvailableInstructors();
+getStudentsByLanguage();
